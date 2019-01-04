@@ -1,5 +1,7 @@
 # mixr
 
+![mixr logo](/img/mixr-logo.png)
+
 C++ music player, compatible on multiple operating systems
 
 ## To Do List
