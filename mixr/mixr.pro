@@ -1,12 +1,12 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2019-01-03T15:11:50
+# Project created by QtCreator 2019-01-04T23:34:54
 #
 #-------------------------------------------------
 
-QT       += core gui multimedia multimediawidgets
+QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets multimedia
 
 TARGET = mixr
 TEMPLATE = app
@@ -26,13 +26,13 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        playsong.cpp
+        player.cpp
 
 HEADERS += \
-        playsong.h
+        player.h
 
 FORMS += \
-        songplayer.ui
+        player.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

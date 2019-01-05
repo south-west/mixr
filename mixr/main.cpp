@@ -1,12 +1,10 @@
-#include "playsong.h"
-
+#include "player.h"
 #include <QApplication>
-#include <QVideoWidget>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    PlaySong w;
+    Player w;
     w.show();
 
     return a.exec();
