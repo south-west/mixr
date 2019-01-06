@@ -26,10 +26,14 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        player.cpp
+        player.cpp \
+    song.cpp \
+    playlist.cpp
 
 HEADERS += \
-        player.h
+        player.h \
+    song.h \
+    playlist.h
 
 FORMS += \
         player.ui
@@ -38,3 +42,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    resources.qrc
