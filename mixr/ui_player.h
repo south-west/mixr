@@ -32,6 +32,8 @@ class Ui_Player
 {
 public:
     QAction *actionChoose_music_directory;
+    QAction *actionAdd_new_library;
+    QAction *actionClear_library;
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout_4;
     QHBoxLayout *horizontalLayout_3;
@@ -69,6 +71,16 @@ public:
         QIcon icon;
         icon.addFile(QStringLiteral(":/icons/directory.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionChoose_music_directory->setIcon(icon);
+        actionAdd_new_library = new QAction(Player);
+        actionAdd_new_library->setObjectName(QStringLiteral("actionAdd_new_library"));
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/icons/addDirectory.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionAdd_new_library->setIcon(icon1);
+        actionClear_library = new QAction(Player);
+        actionClear_library->setObjectName(QStringLiteral("actionClear_library"));
+        QIcon icon2;
+        icon2.addFile(QStringLiteral(":/icons/clear.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionClear_library->setIcon(icon2);
         centralWidget = new QWidget(Player);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         verticalLayout_4 = new QVBoxLayout(centralWidget);
@@ -207,8 +219,10 @@ public:
 #endif // QT_NO_SHORTCUT
 
         menuBar->addAction(menuFile->menuAction());
-        menuFile->addAction(actionChoose_music_directory);
-        mainToolBar->addAction(actionChoose_music_directory);
+        menuFile->addAction(actionAdd_new_library);
+        menuFile->addAction(actionClear_library);
+        mainToolBar->addAction(actionAdd_new_library);
+        mainToolBar->addAction(actionClear_library);
 
         retranslateUi(Player);
 
@@ -219,6 +233,8 @@ public:
     {
         Player->setWindowTitle(QApplication::translate("Player", "Player", nullptr));
         actionChoose_music_directory->setText(QApplication::translate("Player", "Import library", nullptr));
+        actionAdd_new_library->setText(QApplication::translate("Player", "Add new library", nullptr));
+        actionClear_library->setText(QApplication::translate("Player", "Clear library", nullptr));
         label_3->setText(QApplication::translate("Player", "Songs:", nullptr));
         nowPlayingLabel->setText(QApplication::translate("Player", "Now Playing: ", nullptr));
         label->setText(QApplication::translate("Player", "Duration", nullptr));

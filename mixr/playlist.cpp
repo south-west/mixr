@@ -9,15 +9,7 @@
 
 Playlist::Playlist(QString musicDir)
 {
-    QDir musicFolder(musicDir);
-    foreach (QFileInfo curr, musicFolder.entryInfoList()) {
-        if (curr.QFileInfo::suffix() == "mp3" || curr.QFileInfo::suffix() == "mp4") {
-            Song* currSong = new Song();
-            currSong->setSongName(curr.fileName().section(".",0,0));
-            currSong->setFileLocation(curr.absoluteFilePath());
-            userPlaylist.push_back(currSong);
-       }
-    }
+    addDirectory(musicDir);
 }
 
 Playlist::~Playlist()
@@ -46,4 +38,17 @@ size_t Playlist::length() const {return userPlaylist.size();}
 
 void Playlist::randomize() {
     std::random_shuffle(userPlaylist.begin(), userPlaylist.end());
+}
+
+void Playlist::addDirectory(QString musicDir)
+{
+    QDir musicFolder(musicDir);
+    foreach (QFileInfo curr, musicFolder.entryInfoList()) {
+        if (curr.QFileInfo::suffix() == "mp3" || curr.QFileInfo::suffix() == "mp4") {
+            Song* currSong = new Song();
+            currSong->setSongName(curr.fileName().section(".",0,0));
+            currSong->setFileLocation(curr.absoluteFilePath());
+            userPlaylist.push_back(currSong);
+       }
+    }
 }

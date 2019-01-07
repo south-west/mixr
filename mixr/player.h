@@ -33,10 +33,6 @@ private slots:
 
     void on_songList_itemClicked(QListWidgetItem *item);
 
-    void on_actionChoose_music_directory_triggered();
-
-    void setUp(QString dir);
-
     void on_muteButton_clicked();
 
     void on_nextButton_clicked();
@@ -44,6 +40,12 @@ private slots:
     void on_prevButton_clicked();
 
     void on_shuffleButton_clicked();
+
+    void on_actionClear_library_triggered();
+
+    void on_actionAdd_new_library_triggered();
+
+    void setUpWidgets(size_t row);
 
 private:
     Ui::Player *ui;

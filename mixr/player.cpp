@@ -99,31 +99,6 @@ void Player::on_songList_itemClicked(QListWidgetItem *item)
     ui->playButton->setText("Pause");
 }
 
-void Player::on_actionChoose_music_directory_triggered()
-{
-    QString fileDir = QFileDialog::getExistingDirectory
-            (this, "Import", QDir::homePath());
-    setUp(fileDir);
-}
-
-void Player::setUp(QString dir) {
-    Playlist temp(dir);
-    userPlaylist = temp;
-    if (audioPlayer->state() == QMediaPlayer::PlayingState) {
-        audioPlayer->stop();
-        ui->playButton->setText("Play");
-        audioPlayer->setMedia(QMediaContent());
-        ui->nowPlayingLabel->setText("Now Playing: -----");
-    }
-    ui->songList->clear();
-    for (size_t i = 0; i < userPlaylist.length(); ++i) {
-        QListWidgetItem *newItem = new QListWidgetItem;
-        newItem->setData(Qt::UserRole,i);
-        newItem->setText(userPlaylist[i]->getSongName());
-        ui->songList->insertItem(i, newItem);
-    }
-}
-
 void Player::on_muteButton_clicked() {
     if (audioPlayer->volume() != 0) {
         audioPlayer->setVolume(0);
@@ -134,8 +109,6 @@ void Player::on_muteButton_clicked() {
        ui->muteButton->setText("Mute");
     }
 }
-
-
 
 void Player::on_nextButton_clicked()
 {
@@ -182,14 +155,41 @@ void Player::on_shuffleButton_clicked()
     userPlaylist.randomize();
     // Clear
     ui->songList->clear();
-    for (size_t i = 0; i < userPlaylist.length(); ++i) {
+    setUpWidgets(0);
+    audioPlayer->setMedia(QUrl::fromLocalFile(userPlaylist[trackIndex]->getFileLocation()));
+    audioPlayer->play();
+    ui->playButton->setText("Play");
+    ui->nowPlayingLabel->setText("Now Playing: " + userPlaylist[trackIndex]->getSongName());
+}
+
+void Player::on_actionClear_library_triggered()
+{
+    Playlist temp;
+    userPlaylist = temp;
+    ui->songList->clear();
+    if (audioPlayer->state() == QMediaPlayer::PlayingState) {
+        audioPlayer->stop();
+        audioPlayer->setMedia(QMediaContent());
+        ui->playButton->setText("Play");
+    }
+    ui->nowPlayingLabel->setText("Now Playing: -----");
+    trackIndex = 0;
+}
+
+void Player::on_actionAdd_new_library_triggered()
+{
+    QString fileDir = QFileDialog::getExistingDirectory
+            (this, "Import", QDir::homePath());
+    size_t currRow = userPlaylist.length();
+    userPlaylist.addDirectory(fileDir);
+    setUpWidgets(currRow);
+}
+
+void Player::setUpWidgets(size_t row) {
+    for (size_t i = row; i < userPlaylist.length(); ++i) {
         QListWidgetItem *newItem = new QListWidgetItem;
         newItem->setData(Qt::UserRole,i);
         newItem->setText(userPlaylist[i]->getSongName());
         ui->songList->insertItem(i, newItem);
     }
-    audioPlayer->setMedia(QUrl::fromLocalFile(userPlaylist[trackIndex]->getFileLocation()));
-    audioPlayer->play();
-    ui->playButton->setText("Play");
-    ui->nowPlayingLabel->setText("Now Playing: " + userPlaylist[trackIndex]->getSongName());
 }

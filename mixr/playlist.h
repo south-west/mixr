@@ -13,6 +13,7 @@ public:
     Song* operator[](size_t i) const;
     size_t length() const;
     void randomize();
+    void addDirectory(QString musicDir);
 private:
     std::vector<Song*> userPlaylist;
 };
