@@ -9,6 +9,7 @@ class Playlist
 public:
     Playlist(QString musicDir = "C://");
     ~Playlist();
+    Playlist& operator=(const Playlist& rhs);
     Song* operator[](size_t i) const;
     size_t length() const;
 private:

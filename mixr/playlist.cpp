@@ -1,6 +1,5 @@
 #include "playlist.h"
 #include "song.h"
-#include "ui_player.h"
 
 #include "QFile"
 #include "QDir"
@@ -11,11 +10,11 @@ Playlist::Playlist(QString musicDir)
 {
     QDir musicFolder(musicDir);
     foreach (QFileInfo curr, musicFolder.entryInfoList()) {
-        if (curr.QFileInfo::suffix() == "mp3") {
+        if (curr.QFileInfo::suffix() == "mp3" || curr.QFileInfo::suffix() == "mp4") {
             Song* currSong = new Song();
             currSong->setSongName(curr.fileName().section(".",0,0));
             currSong->setFileLocation(curr.absoluteFilePath());
-            qDebug() << currSong->getSongName() << currSong->getFileLocation();
+            // qDebug() << currSong->getSongName() << currSong->getFileLocation();
             userPlaylist.push_back(currSong);
        }
     }
@@ -26,6 +25,20 @@ Playlist::~Playlist()
     foreach (Song* curr, userPlaylist) {
         delete curr;
     }
+}
+
+Playlist& Playlist::operator=(const Playlist &rhs)
+{
+    if  (this != &rhs) {
+        foreach (Song* curr, userPlaylist) {
+            delete curr;
+        }
+        userPlaylist.clear();
+        foreach (Song* curr, rhs.userPlaylist) {
+            userPlaylist.push_back(new Song(*curr));
+        }
+    }
+    return *this;
 }
 
 Song* Playlist::operator[](size_t i) const {return userPlaylist[i];}

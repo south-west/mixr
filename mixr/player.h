@@ -6,6 +6,7 @@
 #include <QListWidgetItem>
 #include "QDir"
 #include "playlist.h"
+#include "ui_player.h"
 
 namespace Ui {
 class Player;
@@ -35,10 +36,17 @@ private slots:
 
     void setUp(QString dir);
 
+    void on_muteButton_clicked();
+
+    void on_nextButton_clicked();
+
+    void on_prevButton_clicked();
+
 private:
     Ui::Player *ui;
     QMediaPlayer* audioPlayer;
     Playlist userPlaylist;
+    size_t trackIndex;
 };
 
 #endif // PLAYER_H
