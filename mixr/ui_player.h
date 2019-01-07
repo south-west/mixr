@@ -50,9 +50,10 @@ public:
     QSlider *volumeSlider;
     QHBoxLayout *horizontalLayout_4;
     QPushButton *playButton;
+    QPushButton *muteButton;
     QPushButton *prevButton;
     QPushButton *nextButton;
-    QPushButton *muteButton;
+    QPushButton *shuffleButton;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QToolBar *mainToolBar;
@@ -87,6 +88,7 @@ public:
 
         songList = new QListWidget(centralWidget);
         songList->setObjectName(QStringLiteral("songList"));
+        songList->viewport()->setProperty("cursor", QVariant(QCursor(Qt::PointingHandCursor)));
 
         verticalLayout_2->addWidget(songList);
 
@@ -162,6 +164,11 @@ public:
 
         horizontalLayout_4->addWidget(playButton);
 
+        muteButton = new QPushButton(centralWidget);
+        muteButton->setObjectName(QStringLiteral("muteButton"));
+
+        horizontalLayout_4->addWidget(muteButton);
+
         prevButton = new QPushButton(centralWidget);
         prevButton->setObjectName(QStringLiteral("prevButton"));
 
@@ -172,10 +179,10 @@ public:
 
         horizontalLayout_4->addWidget(nextButton);
 
-        muteButton = new QPushButton(centralWidget);
-        muteButton->setObjectName(QStringLiteral("muteButton"));
+        shuffleButton = new QPushButton(centralWidget);
+        shuffleButton->setObjectName(QStringLiteral("shuffleButton"));
 
-        horizontalLayout_4->addWidget(muteButton);
+        horizontalLayout_4->addWidget(shuffleButton);
 
 
         verticalLayout_4->addLayout(horizontalLayout_4);
@@ -217,10 +224,11 @@ public:
         label->setText(QApplication::translate("Player", "Duration", nullptr));
         label_2->setText(QApplication::translate("Player", "Volume", nullptr));
         playButton->setText(QApplication::translate("Player", "Play", nullptr));
+        muteButton->setText(QApplication::translate("Player", "Mute", nullptr));
         prevButton->setText(QApplication::translate("Player", "Prev", nullptr));
         nextButton->setText(QApplication::translate("Player", "Next", nullptr));
-        muteButton->setText(QApplication::translate("Player", "Mute", nullptr));
-        menuFile->setTitle(QApplication::translate("Player", "Edit", nullptr));
+        shuffleButton->setText(QApplication::translate("Player", "Shuffle", nullptr));
+        menuFile->setTitle(QApplication::translate("Player", "Import", nullptr));
     } // retranslateUi
 
 };

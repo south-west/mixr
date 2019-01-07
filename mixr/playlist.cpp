@@ -5,6 +5,7 @@
 #include "QDir"
 #include "QDebug"
 #include "vector"
+#include <algorithm>
 
 Playlist::Playlist(QString musicDir)
 {
@@ -14,7 +15,6 @@ Playlist::Playlist(QString musicDir)
             Song* currSong = new Song();
             currSong->setSongName(curr.fileName().section(".",0,0));
             currSong->setFileLocation(curr.absoluteFilePath());
-            // qDebug() << currSong->getSongName() << currSong->getFileLocation();
             userPlaylist.push_back(currSong);
        }
     }
@@ -43,3 +43,7 @@ Playlist& Playlist::operator=(const Playlist &rhs)
 
 Song* Playlist::operator[](size_t i) const {return userPlaylist[i];}
 size_t Playlist::length() const {return userPlaylist.size();}
+
+void Playlist::randomize() {
+    std::random_shuffle(userPlaylist.begin(), userPlaylist.end());
+}

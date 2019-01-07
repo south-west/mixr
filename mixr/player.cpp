@@ -16,6 +16,7 @@ Player::Player(QWidget *parent)  :
     ui->setupUi(this);
     setWindowTitle("mixr");
     audioPlayer = new QMediaPlayer(this, QMediaPlayer::StreamPlayback);
+    ui->nowPlayingLabel->setText("Now Playing: -----");
     connect(audioPlayer, &QMediaPlayer::positionChanged, this, &Player::on_positionChanged);
     connect(audioPlayer, &QMediaPlayer::durationChanged, this, &Player::on_durationChanged);
 }
@@ -108,6 +109,13 @@ void Player::on_actionChoose_music_directory_triggered()
 void Player::setUp(QString dir) {
     Playlist temp(dir);
     userPlaylist = temp;
+    if (audioPlayer->state() == QMediaPlayer::PlayingState) {
+        audioPlayer->stop();
+        ui->playButton->setText("Play");
+        audioPlayer->setMedia(QMediaContent());
+        ui->nowPlayingLabel->setText("Now Playing: -----");
+    }
+    ui->songList->clear();
     for (size_t i = 0; i < userPlaylist.length(); ++i) {
         QListWidgetItem *newItem = new QListWidgetItem;
         newItem->setData(Qt::UserRole,i);
@@ -131,7 +139,8 @@ void Player::on_muteButton_clicked() {
 
 void Player::on_nextButton_clicked()
 {
-    if (trackIndex == userPlaylist.length() - 1) {
+    if (userPlaylist.length() == 0) {return;}
+    else if (trackIndex == userPlaylist.length() - 1) {
         trackIndex = 0;
     }
     else {
@@ -146,7 +155,8 @@ void Player::on_nextButton_clicked()
 
 void Player::on_prevButton_clicked()
 {
-    if (trackIndex == 0) {
+    if (userPlaylist.length() == 0) {return;}
+    else if (trackIndex == 0) {
         trackIndex = userPlaylist.length() - 1;
     }
     else {
@@ -157,4 +167,29 @@ void Player::on_prevButton_clicked()
     ui->nowPlayingLabel->setText("Now Playing: " + userPlaylist[trackIndex]->getSongName());
     audioPlayer->play();
     ui->playButton->setText("Pause");
+}
+
+
+
+void Player::on_shuffleButton_clicked()
+{
+    if (userPlaylist.length() == 0) {return;}
+    if (audioPlayer->state() == QMediaPlayer::PlayingState) {
+        audioPlayer->stop();
+    }
+    trackIndex = 0;
+    // First randomize the vector
+    userPlaylist.randomize();
+    // Clear
+    ui->songList->clear();
+    for (size_t i = 0; i < userPlaylist.length(); ++i) {
+        QListWidgetItem *newItem = new QListWidgetItem;
+        newItem->setData(Qt::UserRole,i);
+        newItem->setText(userPlaylist[i]->getSongName());
+        ui->songList->insertItem(i, newItem);
+    }
+    audioPlayer->setMedia(QUrl::fromLocalFile(userPlaylist[trackIndex]->getFileLocation()));
+    audioPlayer->play();
+    ui->playButton->setText("Play");
+    ui->nowPlayingLabel->setText("Now Playing: " + userPlaylist[trackIndex]->getSongName());
 }

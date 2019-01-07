@@ -30,6 +30,7 @@ private slots:
     void on_positionChanged(qint64 position);
 
     void on_durationChanged(qint64 position);
+
     void on_songList_itemClicked(QListWidgetItem *item);
 
     void on_actionChoose_music_directory_triggered();
@@ -41,6 +42,8 @@ private slots:
     void on_nextButton_clicked();
 
     void on_prevButton_clicked();
+
+    void on_shuffleButton_clicked();
 
 private:
     Ui::Player *ui;

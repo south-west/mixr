@@ -138,6 +138,13 @@
        </widget>
       </item>
       <item>
+       <widget class="QPushButton" name="prevButton">
+        <property name="text">
+         <string>Prev</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="nextButton">
         <property name="text">
          <string>Next</string>
@@ -145,9 +152,9 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="prevButton">
+       <widget class="QPushButton" name="shuffleButton">
         <property name="text">
-         <string>Prev</string>
+         <string>Shuffle</string>
         </property>
        </widget>
       </item>
@@ -166,7 +173,7 @@
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
-     <string>Edit</string>
+     <string>Import</string>
     </property>
     <addaction name="actionChoose_music_directory"/>
    </widget>
