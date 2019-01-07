@@ -4,7 +4,7 @@
 
 C++ music player, compatible on multiple operating systems
 ## Current Prototype
-![first prototype](/img/second-prototype.png)
+![first prototype](/img/second-prototype.PNG)
 
 ## To Do List
 - [x] Work with opening/playing a single song
