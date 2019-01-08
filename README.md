@@ -4,7 +4,7 @@
 
 C++ music player, compatible on multiple operating systems
 ## Current Prototype
-![dark theme](/img/dark-theme-prototype.PNG)
+![dark theme](/img/dark-theme-prototype.png)
 
 So far, a very simple yet fast music player has been created. Additional features to create a more complex music player for a future project are outlined below under <i>Future Goals<i>.
 
