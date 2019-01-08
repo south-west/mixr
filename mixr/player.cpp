@@ -6,7 +6,6 @@
 #include "qmediaplayer.h"
 #include "QListWidgetItem"
 #include "QFileDialog"
-#include "QDebug"
 #include "QDir"
 
 Player::Player(QWidget *parent)  :
@@ -141,8 +140,6 @@ void Player::on_prevButton_clicked()
     audioPlayer->play();
     ui->playButton->setText("Pause");
 }
-
-
 
 void Player::on_shuffleButton_clicked()
 {

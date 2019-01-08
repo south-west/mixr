@@ -3,7 +3,7 @@
 
 #include "QFile"
 #include "QDir"
-#include "QDebug"
+
 #include "vector"
 #include <algorithm>
 
