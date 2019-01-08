@@ -22,7 +22,6 @@
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -31,7 +30,6 @@ QT_BEGIN_NAMESPACE
 class Ui_Player
 {
 public:
-    QAction *actionChoose_music_directory;
     QAction *actionAdd_new_library;
     QAction *actionClear_library;
     QWidget *centralWidget;
@@ -59,16 +57,15 @@ public:
     QMenuBar *menuBar;
     QMenu *menuFile;
     QStatusBar *statusBar;
-    QToolBar *mainToolBar;
 
     void setupUi(QMainWindow *Player)
     {
         if (Player->objectName().isEmpty())
             Player->setObjectName(QStringLiteral("Player"));
         Player->resize(542, 377);
-        Player->setStyleSheet(QLatin1String("/*QWidget {\n"
-"  background-color: #32414B  ;\n"
-"}*/\n"
+        Player->setStyleSheet(QLatin1String("QWidget {\n"
+"  	background-color: #32414B;\n"
+"}\n"
 "\n"
 "QMainWindow::separator {\n"
 "    background-color: #32414B;\n"
@@ -93,22 +90,83 @@ public:
 "    margin-left: 2px;\n"
 "    margin-right: 2px;\n"
 "}\n"
-""));
-        actionChoose_music_directory = new QAction(Player);
-        actionChoose_music_directory->setObjectName(QStringLiteral("actionChoose_music_directory"));
-        QIcon icon;
-        icon.addFile(QStringLiteral(":/icons/directory.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actionChoose_music_directory->setIcon(icon);
+"\n"
+"/* SCROLL AREA */\n"
+"\n"
+"QScrollBar:vertical {\n"
+"    background-color: #19232D;\n"
+"    width: 16px;\n"
+"    margin: 16px 2px 16px 2px;\n"
+"    border: 1px solid #32414B;\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:vertical {\n"
+"    background-color: #787878;\n"
+"    border: 1px solid #32414B;\n"
+"    min-height: 8px;\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:vertical:hover {\n"
+"    background-color: #148C"
+                        "D2;\n"
+"    border: 1px solid #148CD2;\n"
+"    border-radius: 4px;\n"
+"    min-height: 8px;\n"
+"\n"
+"}\n"
+"\n"
+"QScrollBar::sub-line:vertical {\n"
+"	background-color: #787878;\n"
+"    margin: 3px 0px 3px 0px;\n"
+"    height: 10px;\n"
+"    width: 10px;\n"
+"    subcontrol-position: top;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"\n"
+"QScrollBar::add-line:vertical {\n"
+"	background-color: #787878;\n"
+"    margin: 3px 0px 3px 0px;\n"
+"    height: 10px;\n"
+"    width: 10px;\n"
+"    subcontrol-position: bottom;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"\n"
+"QScrollBar::sub-line:vertical:hover,\n"
+"QScrollBar::sub-line:vertical:on {\n"
+"	background-color: #148CD2;\n"
+"    height: 10px;\n"
+"    width: 10px;\n"
+"    subcontrol-position: top;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"\n"
+"QScrollBar::add-line:vertical:hover,\n"
+"QScrollBar::add-line:vertical:on {\n"
+"	background-color: #148CD2;\n"
+"    height: 10px;\n"
+"    width: 10px;\n"
+"    subcontrol-position: bottom;\n"
+"    subcontrol-origin: margin;\n"
+""
+                        "}\n"
+"\n"
+"QScrollBar::up-arrow:vertical,\n"
+"QScrollBar::down-arrow:vertical {\n"
+"    background: none;\n"
+"}\n"
+"\n"
+"QScrollBar::add-page:vertical,\n"
+"QScrollBar::sub-page:vertical {\n"
+"    background: none;\n"
+"}"));
         actionAdd_new_library = new QAction(Player);
         actionAdd_new_library->setObjectName(QStringLiteral("actionAdd_new_library"));
-        QIcon icon1;
-        icon1.addFile(QStringLiteral(":/icons/addDirectory.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actionAdd_new_library->setIcon(icon1);
         actionClear_library = new QAction(Player);
         actionClear_library->setObjectName(QStringLiteral("actionClear_library"));
-        QIcon icon2;
-        icon2.addFile(QStringLiteral(":/icons/clear.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actionClear_library->setIcon(icon2);
         centralWidget = new QWidget(Player);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         verticalLayout_4 = new QVBoxLayout(centralWidget);
@@ -157,150 +215,10 @@ public:
 "\n"
 "QListView::item:pressed {\n"
 "    background-color: #1464A0;\n"
-"}\n"
-"\n"
-"\n"
-"/* SCROLL AREA */\n"
-"\n"
-"QScrollBar:horizontal {\n"
-"    height: 16px;\n"
-"    margin: 2px 16px 2px 16px;\n"
-"    border: 1px solid #32414B;\n"
-"    border-radius: 4px;\n"
-"    background-color: #19232D;\n"
-"}\n"
-"\n"
-"QScrollBar::handle:horizontal {\n"
-"    background-color: #787878;\n"
-"    border: 1px solid #32414B;\n"
-"    border-radius: 4px;\n"
-"    min-width: 8px;\n"
-"\n"
-"}\n"
-"\n"
-"QScrollBar::handle:horizontal:hover {\n"
-"    background-color: #148CD2;\n"
-"    border: 1px solid #148CD2;\n"
-"    border-radius: 4px;\n"
-"    min-width: 8px;\n"
-"}\n"
-"\n"
-"QScrollBar::add-line:horizontal {\n"
-"    margin: 0px 0px 0px 0px;\n"
-"    width: 10px;\n"
-""
-                        "    height: 10px;\n"
-"    subcontrol-position: right;\n"
-"    subcontrol-origin: margin;\n"
-"}\n"
-"\n"
-"QScrollBar::sub-line:horizontal {\n"
-" 	background-color: #787878;\n"
-"    margin: 0px 3px 0px 3px;\n"
-"    height: 10px;\n"
-"    width: 10px;\n"
-"    subcontrol-position: left;\n"
-"    subcontrol-origin: margin;\n"
-"}\n"
-"\n"
-"QScrollBar::add-line:horizontal:hover,\n"
-"QScrollBar::add-line:horizontal:on {\n"
-"	background-color: #148CD2;\n"
-"    height: 10px;\n"
-"    width: 10px;\n"
-"    subcontrol-position: right;\n"
-"    subcontrol-origin: margin;\n"
-"}\n"
-"\n"
-"QScrollBar::sub-line:horizontal:hover,\n"
-"QScrollBar::sub-line:horizontal:on {\n"
-"	background-color: #148CD2;\n"
-"    height: 10px;\n"
-"    width: 10px;\n"
-"    subcontrol-position: left;\n"
-"    subcontrol-origin: margin;\n"
-"}\n"
-"\n"
-"QScrollBar::up-arrow:horizontal,\n"
-"QScrollBar::down-arrow:horizontal {\n"
-"    background: none;\n"
-"}\n"
-"\n"
-"QScrollBar::add-page:horizontal,\n"
-"QScrollBar::sub-page:horizontal {\n"
-"    background: none;\n"
-""
-                        "}\n"
-"\n"
-"QScrollBar:vertical {\n"
-"    background-color: #19232D;\n"
-"    width: 16px;\n"
-"    margin: 16px 2px 16px 2px;\n"
-"    border: 1px solid #32414B;\n"
-"    border-radius: 4px;\n"
-"}\n"
-"\n"
-"QScrollBar::handle:vertical {\n"
-"    background-color: #787878;\n"
-"    border: 1px solid #32414B;\n"
-"    min-height: 8px;\n"
-"    border-radius: 4px;\n"
-"}\n"
-"\n"
-"QScrollBar::handle:vertical:hover {\n"
-"    background-color: #148CD2;\n"
-"    border: 1px solid #148CD2;\n"
-"    border-radius: 4px;\n"
-"    min-height: 8px;\n"
-"\n"
-"}\n"
-"\n"
-"QScrollBar::sub-line:vertical {\n"
-"	background-color: #787878;\n"
-"    margin: 3px 0px 3px 0px;\n"
-"    height: 10px;\n"
-"    width: 10px;\n"
-"    subcontrol-position: top;\n"
-"    subcontrol-origin: margin;\n"
-"}\n"
-"\n"
-"QScrollBar::add-line:vertical {\n"
-"	background-color: #787878;\n"
-"    margin: 3px 0px 3px 0px;\n"
-"    height: 10px;\n"
-"    width: 10px;\n"
-"    subcontrol-position: bottom;\n"
-"    subcontrol-origin: margin;\n"
-"}\n"
-"\n"
-"QScrollBar::sub-line:vert"
-                        "ical:hover,\n"
-"QScrollBar::sub-line:vertical:on {\n"
-"	background-color: #148CD2;\n"
-"    height: 10px;\n"
-"    width: 10px;\n"
-"    subcontrol-position: top;\n"
-"    subcontrol-origin: margin;\n"
-"}\n"
-"\n"
-"QScrollBar::add-line:vertical:hover,\n"
-"QScrollBar::add-line:vertical:on {\n"
-"	background-color: #148CD2;\n"
-"    height: 10px;\n"
-"    width: 10px;\n"
-"    subcontrol-position: bottom;\n"
-"    subcontrol-origin: margin;\n"
-"}\n"
-"\n"
-"QScrollBar::up-arrow:vertical,\n"
-"QScrollBar::down-arrow:vertical {\n"
-"    background: none;\n"
-"}\n"
-"\n"
-"QScrollBar::add-page:vertical,\n"
-"QScrollBar::sub-page:vertical {\n"
-"    background: none;\n"
+"	border: 1px solid #148CD2;\n"
 "}"));
+        songList->setDragDropMode(QAbstractItemView::NoDragDrop);
+        songList->setSortingEnabled(false);
 
         verticalLayout_2->addWidget(songList);
 
@@ -361,16 +279,8 @@ public:
         durationSlider = new QSlider(centralWidget);
         durationSlider->setObjectName(QStringLiteral("durationSlider"));
         durationSlider->setAutoFillBackground(false);
-        durationSlider->setStyleSheet(QLatin1String("QSlider:disabled {\n"
-"    background: #19232D;\n"
-"}\n"
-"\n"
-"QSlider:focus {\n"
-"    border: none;\n"
-"}\n"
-"\n"
-"QSlider::groove:horizontal {\n"
-"    background: #32414B;\n"
+        durationSlider->setStyleSheet(QLatin1String("QSlider::groove:horizontal {\n"
+"    background: grey;\n"
 "    border: 1px solid #32414B;\n"
 "    height: 4px;\n"
 "    margin: 0px;\n"
@@ -408,14 +318,14 @@ public:
 "    border: 1px solid #32414B;\n"
 "    width: 4px;\n"
 "    margin: 0px;\n"
-"    border-radiu"
-                        "s: 4px;\n"
+"    border-radius: 4px;\n"
 "}\n"
 "\n"
 "QSlider::sub-page:vertical {\n"
 "    background: #1464A0;\n"
 "    border: 1px solid #32414B;\n"
-"    width: 4px;\n"
+""
+                        "    width: 4px;\n"
 "    margin: 0px;\n"
 "    border-radius: 4px;\n"
 "}\n"
@@ -472,16 +382,8 @@ public:
 
         volumeSlider = new QSlider(centralWidget);
         volumeSlider->setObjectName(QStringLiteral("volumeSlider"));
-        volumeSlider->setStyleSheet(QLatin1String("QSlider:disabled {\n"
-"    background: #19232D;\n"
-"}\n"
-"\n"
-"QSlider:focus {\n"
-"    border: none;\n"
-"}\n"
-"\n"
-"QSlider::groove:horizontal {\n"
-"    background: #32414B;\n"
+        volumeSlider->setStyleSheet(QLatin1String("QSlider::groove:horizontal {\n"
+"    background: grey;\n"
 "    border: 1px solid #32414B;\n"
 "    height: 4px;\n"
 "    margin: 0px;\n"
@@ -519,14 +421,14 @@ public:
 "    border: 1px solid #32414B;\n"
 "    width: 4px;\n"
 "    margin: 0px;\n"
-"    border-radiu"
-                        "s: 4px;\n"
+"    border-radius: 4px;\n"
 "}\n"
 "\n"
 "QSlider::sub-page:vertical {\n"
 "    background: #1464A0;\n"
 "    border: 1px solid #32414B;\n"
-"    width: 4px;\n"
+""
+                        "    width: 4px;\n"
 "    margin: 0px;\n"
 "    border-radius: 4px;\n"
 "}\n"
@@ -573,7 +475,6 @@ public:
 "    padding: 3px;\n"
 "    outline: none;\n"
 "}\n"
-"\n"
 "\n"
 "QPushButton:hover{\n"
 "    border: 1px solid #148CD2;\n"
@@ -665,47 +566,43 @@ public:
         Player->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(Player);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 542, 21));
-        menuBar->setStyleSheet(QLatin1String("background-color: #32414B;\n"
-"color: white;"));
+        menuBar->setGeometry(QRect(0, 0, 542, 27));
+        menuBar->setCursor(QCursor(Qt::PointingHandCursor));
+        menuBar->setLayoutDirection(Qt::LeftToRight);
+        menuBar->setStyleSheet(QLatin1String("QMenuBar {\n"
+"    background-color: #32414B;\n"
+"    padding: 2px;\n"
+"    border: 1px solid #19232D;\n"
+"    color: #F0F0F0;\n"
+"}\n"
+"\n"
+"QMenu {\n"
+"    border: 0px solid #32414B;\n"
+"    color: #F0F0F0;\n"
+"    margin: 0px;\n"
+"}"));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QStringLiteral("menuFile"));
         Player->setMenuBar(menuBar);
         statusBar = new QStatusBar(Player);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         Player->setStatusBar(statusBar);
-        mainToolBar = new QToolBar(Player);
-        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        mainToolBar->setStyleSheet(QLatin1String("QToolBar {\n"
-"    background-color: #32414B;\n"
-"    border-bottom: 1px solid #19232D;\n"
-"    padding: 2px;\n"
-"    font-weight: bold;\n"
-"}\n"
-"\n"
-"\n"
-"QToolBar::handle:horizontal {\n"
-"    width: 6px;\n"
-"	background-color: #32414B;\n"
-"}\n"
-"\n"
-"QToolBar::handle:vertical {\n"
-"    height: 6px;\n"
-" 	background-color: #32414B;\n"
-"}"));
-        mainToolBar->setAllowedAreas(Qt::TopToolBarArea);
-        Player->addToolBar(Qt::TopToolBarArea, mainToolBar);
 #ifndef QT_NO_SHORTCUT
         label_3->setBuddy(songList);
         label->setBuddy(durationSlider);
         label_2->setBuddy(volumeSlider);
 #endif // QT_NO_SHORTCUT
+        QWidget::setTabOrder(songList, durationSlider);
+        QWidget::setTabOrder(durationSlider, volumeSlider);
+        QWidget::setTabOrder(volumeSlider, playButton);
+        QWidget::setTabOrder(playButton, muteButton);
+        QWidget::setTabOrder(muteButton, prevButton);
+        QWidget::setTabOrder(prevButton, nextButton);
+        QWidget::setTabOrder(nextButton, shuffleButton);
 
         menuBar->addAction(menuFile->menuAction());
         menuFile->addAction(actionAdd_new_library);
         menuFile->addAction(actionClear_library);
-        mainToolBar->addAction(actionAdd_new_library);
-        mainToolBar->addAction(actionClear_library);
 
         retranslateUi(Player);
 
@@ -715,7 +612,6 @@ public:
     void retranslateUi(QMainWindow *Player)
     {
         Player->setWindowTitle(QApplication::translate("Player", "Player", nullptr));
-        actionChoose_music_directory->setText(QApplication::translate("Player", "Import library", nullptr));
         actionAdd_new_library->setText(QApplication::translate("Player", "Add new library", nullptr));
         actionClear_library->setText(QApplication::translate("Player", "Clear library", nullptr));
         label_3->setText(QApplication::translate("Player", "Songs:", nullptr));
@@ -726,8 +622,8 @@ public:
         muteButton->setText(QApplication::translate("Player", "Mute", nullptr));
         prevButton->setText(QApplication::translate("Player", "Prev", nullptr));
         nextButton->setText(QApplication::translate("Player", "Next", nullptr));
-        shuffleButton->setText(QApplication::translate("Player", "Shuffle", nullptr));
-        menuFile->setTitle(QApplication::translate("Player", "Import", nullptr));
+        shuffleButton->setText(QApplication::translate("Player", "Mixr", nullptr));
+        menuFile->setTitle(QApplication::translate("Player", "File", nullptr));
     } // retranslateUi
 
 };

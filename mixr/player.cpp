@@ -19,7 +19,6 @@ Player::Player(QWidget *parent)  :
     ui->nowPlayingLabel->setText("Now Playing: -----");
     connect(audioPlayer, &QMediaPlayer::positionChanged, this, &Player::on_positionChanged);
     connect(audioPlayer, &QMediaPlayer::durationChanged, this, &Player::on_durationChanged);
-    // qApp->setStyleSheet("stylesheet.qss");
 }
 
 Player::~Player()
