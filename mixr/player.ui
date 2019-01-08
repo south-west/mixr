@@ -13,6 +13,36 @@
   <property name="windowTitle">
    <string>Player</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">/*QWidget {
+  background-color: #32414B  ;
+}*/
+
+QMainWindow::separator {
+    background-color: #32414B;
+    border: 0 solid #19232D;
+    spacing: 0;
+    padding: 2px;
+}
+
+QMainWindow::separator:hover {
+    background-color: #505F69;
+    border: 0px solid #148CD2;
+}
+
+QMainWindow::separator:horizontal {
+    width: 5px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+QMainWindow::separator:vertical {
+    height: 5px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+</string>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout_4">
     <item>
@@ -21,6 +51,21 @@
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
          <widget class="QLabel" name="label_3">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    background-color: #32414B;
+    border: 0px solid #32414B;
+    padding: 2px;
+    margin: 0px;
+    color: #F0F0F0
+}
+
+QLabel::disabled {
+    background-color: #32414B;
+    border: 0px solid #32414B;
+    color: #787878;
+}</string>
+          </property>
           <property name="text">
            <string>Songs:</string>
           </property>
@@ -34,6 +79,167 @@
           <property name="cursor" stdset="0">
            <cursorShape>PointingHandCursor</cursorShape>
           </property>
+          <property name="styleSheet">
+           <string notr="true">QListView {
+    background-color: #19232D;
+    border: 1px solid #32414B;
+    color: #F0F0F0;
+    gridline-color: #32414B;
+    border-radius: 4px;
+}
+
+QListView:hover {
+    background-color: #19232D;
+    border: 1px solid #148CD2;
+}
+
+QListView::item:pressed {
+    background-color: #1464A0;
+}
+
+
+/* SCROLL AREA */
+
+QScrollBar:horizontal {
+    height: 16px;
+    margin: 2px 16px 2px 16px;
+    border: 1px solid #32414B;
+    border-radius: 4px;
+    background-color: #19232D;
+}
+
+QScrollBar::handle:horizontal {
+    background-color: #787878;
+    border: 1px solid #32414B;
+    border-radius: 4px;
+    min-width: 8px;
+
+}
+
+QScrollBar::handle:horizontal:hover {
+    background-color: #148CD2;
+    border: 1px solid #148CD2;
+    border-radius: 4px;
+    min-width: 8px;
+}
+
+QScrollBar::add-line:horizontal {
+    margin: 0px 0px 0px 0px;
+    width: 10px;
+    height: 10px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:horizontal {
+ 	background-color: #787878;
+    margin: 0px 3px 0px 3px;
+    height: 10px;
+    width: 10px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::add-line:horizontal:hover,
+QScrollBar::add-line:horizontal:on {
+	background-color: #148CD2;
+    height: 10px;
+    width: 10px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:horizontal:hover,
+QScrollBar::sub-line:horizontal:on {
+	background-color: #148CD2;
+    height: 10px;
+    width: 10px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::up-arrow:horizontal,
+QScrollBar::down-arrow:horizontal {
+    background: none;
+}
+
+QScrollBar::add-page:horizontal,
+QScrollBar::sub-page:horizontal {
+    background: none;
+}
+
+QScrollBar:vertical {
+    background-color: #19232D;
+    width: 16px;
+    margin: 16px 2px 16px 2px;
+    border: 1px solid #32414B;
+    border-radius: 4px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #787878;
+    border: 1px solid #32414B;
+    min-height: 8px;
+    border-radius: 4px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: #148CD2;
+    border: 1px solid #148CD2;
+    border-radius: 4px;
+    min-height: 8px;
+
+}
+
+QScrollBar::sub-line:vertical {
+	background-color: #787878;
+    margin: 3px 0px 3px 0px;
+    height: 10px;
+    width: 10px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::add-line:vertical {
+	background-color: #787878;
+    margin: 3px 0px 3px 0px;
+    height: 10px;
+    width: 10px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:vertical:hover,
+QScrollBar::sub-line:vertical:on {
+	background-color: #148CD2;
+    height: 10px;
+    width: 10px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::add-line:vertical:hover,
+QScrollBar::add-line:vertical:on {
+	background-color: #148CD2;
+    height: 10px;
+    width: 10px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::up-arrow:vertical,
+QScrollBar::down-arrow:vertical {
+    background: none;
+}
+
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: none;
+}</string>
+          </property>
+          <property name="dragDropMode">
+           <enum>QAbstractItemView::NoDragDrop</enum>
+          </property>
          </widget>
         </item>
        </layout>
@@ -43,8 +249,23 @@
       </item>
      </layout>
     </item>
-    <item alignment="Qt::AlignHCenter">
+    <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
      <widget class="QLabel" name="nowPlayingLabel">
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+    background-color: #32414B;
+    border: 0px solid #32414B;
+    padding: 2px;
+    margin: 0px;
+    color: #F0F0F0
+}
+
+QLabel::disabled {
+    background-color: #32414B;
+    border: 0px solid #32414B;
+    color: #787878;
+}</string>
+      </property>
       <property name="text">
        <string>Now Playing: </string>
       </property>
@@ -56,6 +277,21 @@
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
          <widget class="QLabel" name="label">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    background-color: #32414B;
+    border: 0px solid #32414B;
+    padding: 2px;
+    margin: 0px;
+    color: #F0F0F0
+}
+
+QLabel::disabled {
+    background-color: #32414B;
+    border: 0px solid #32414B;
+    color: #787878;
+}</string>
+          </property>
           <property name="text">
            <string>Duration</string>
           </property>
@@ -66,6 +302,86 @@
         </item>
         <item>
          <widget class="QSlider" name="durationSlider">
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QSlider:disabled {
+    background: #19232D;
+}
+
+QSlider:focus {
+    border: none;
+}
+
+QSlider::groove:horizontal {
+    background: #32414B;
+    border: 1px solid #32414B;
+    height: 4px;
+    margin: 0px;
+    border-radius: 4px;
+}
+
+QSlider::sub-page:horizontal {
+    background: #1464A0;
+    border: 1px solid #32414B;
+    height: 4px;
+    margin: 0px;
+    border-radius: 4px;
+}
+
+QSlider::sub-page:horizontal:disabled {
+    background: #14506E;
+}
+
+QSlider::handle:horizontal {
+    background: #787878;
+    border: 1px solid #32414B;
+    width: 8px;
+    height: 8px;
+    margin: -8px 0;
+    border-radius: 4px;
+}
+
+QSlider::handle:horizontal:hover {
+    background: #148CD2;
+    border: 1px solid #148CD2;
+}
+
+QSlider::groove:vertical {
+    background: #32414B;
+    border: 1px solid #32414B;
+    width: 4px;
+    margin: 0px;
+    border-radius: 4px;
+}
+
+QSlider::sub-page:vertical {
+    background: #1464A0;
+    border: 1px solid #32414B;
+    width: 4px;
+    margin: 0px;
+    border-radius: 4px;
+}
+
+QSlider::sub-page:vertical:disabled {
+    background: #14506E;
+}
+
+QSlider::handle:vertical {
+    background: #787878;
+    border: 1px solid #32414B;
+    width: 8px;
+    height: 8px;
+    margin: 0 -8px;
+    border-radius: 4px;
+}
+
+QSlider::handle:vertical:hover {
+    background: #148CD2;
+    border: 1px solid #148CD2;
+}</string>
+          </property>
           <property name="maximum">
            <number>100</number>
           </property>
@@ -80,6 +396,21 @@
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
          <widget class="QLabel" name="label_2">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    background-color: #32414B;
+    border: 0px solid #32414B;
+    padding: 2px;
+    margin: 0px;
+    color: #F0F0F0
+}
+
+QLabel::disabled {
+    background-color: #32414B;
+    border: 0px solid #32414B;
+    color: #787878;
+}</string>
+          </property>
           <property name="text">
            <string>Volume</string>
           </property>
@@ -106,6 +437,83 @@
         </item>
         <item>
          <widget class="QSlider" name="volumeSlider">
+          <property name="styleSheet">
+           <string notr="true">QSlider:disabled {
+    background: #19232D;
+}
+
+QSlider:focus {
+    border: none;
+}
+
+QSlider::groove:horizontal {
+    background: #32414B;
+    border: 1px solid #32414B;
+    height: 4px;
+    margin: 0px;
+    border-radius: 4px;
+}
+
+QSlider::sub-page:horizontal {
+    background: #1464A0;
+    border: 1px solid #32414B;
+    height: 4px;
+    margin: 0px;
+    border-radius: 4px;
+}
+
+QSlider::sub-page:horizontal:disabled {
+    background: #14506E;
+}
+
+QSlider::handle:horizontal {
+    background: #787878;
+    border: 1px solid #32414B;
+    width: 8px;
+    height: 8px;
+    margin: -8px 0;
+    border-radius: 4px;
+}
+
+QSlider::handle:horizontal:hover {
+    background: #148CD2;
+    border: 1px solid #148CD2;
+}
+
+QSlider::groove:vertical {
+    background: #32414B;
+    border: 1px solid #32414B;
+    width: 4px;
+    margin: 0px;
+    border-radius: 4px;
+}
+
+QSlider::sub-page:vertical {
+    background: #1464A0;
+    border: 1px solid #32414B;
+    width: 4px;
+    margin: 0px;
+    border-radius: 4px;
+}
+
+QSlider::sub-page:vertical:disabled {
+    background: #14506E;
+}
+
+QSlider::handle:vertical {
+    background: #787878;
+    border: 1px solid #32414B;
+    width: 8px;
+    height: 8px;
+    margin: 0 -8px;
+    border-radius: 4px;
+}
+
+QSlider::handle:vertical:hover {
+    background: #148CD2;
+    border: 1px solid #148CD2;
+}</string>
+          </property>
           <property name="maximum">
            <number>100</number>
           </property>
@@ -125,6 +533,23 @@
      <layout class="QHBoxLayout" name="horizontalLayout_4">
       <item>
        <widget class="QPushButton" name="playButton">
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+   	background-color: #19232D;
+    border: 1px solid #19232D;
+    color: #F0F0F0;
+    border-radius: 4px;
+    padding: 3px;
+    outline: none;
+}
+
+
+QPushButton:hover{
+    border: 1px solid #148CD2;
+    color: #F0F0F0;
+}
+</string>
+        </property>
         <property name="text">
          <string>Play</string>
         </property>
@@ -132,6 +557,22 @@
       </item>
       <item>
        <widget class="QPushButton" name="muteButton">
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+   	background-color: #19232D;
+    border: 1px solid #19232D;
+    color: #F0F0F0;
+    border-radius: 4px;
+    padding: 3px;
+    outline: none;
+}
+
+
+QPushButton:hover{
+    border: 1px solid #148CD2;
+    color: #F0F0F0;
+}</string>
+        </property>
         <property name="text">
          <string>Mute</string>
         </property>
@@ -139,6 +580,22 @@
       </item>
       <item>
        <widget class="QPushButton" name="prevButton">
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+   	background-color: #19232D;
+    border: 1px solid #19232D;
+    color: #F0F0F0;
+    border-radius: 4px;
+    padding: 3px;
+    outline: none;
+}
+
+
+QPushButton:hover{
+    border: 1px solid #148CD2;
+    color: #F0F0F0;
+}</string>
+        </property>
         <property name="text">
          <string>Prev</string>
         </property>
@@ -146,6 +603,22 @@
       </item>
       <item>
        <widget class="QPushButton" name="nextButton">
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+   	background-color: #19232D;
+    border: 1px solid #19232D;
+    color: #F0F0F0;
+    border-radius: 4px;
+    padding: 3px;
+    outline: none;
+}
+
+
+QPushButton:hover{
+    border: 1px solid #148CD2;
+    color: #F0F0F0;
+}</string>
+        </property>
         <property name="text">
          <string>Next</string>
         </property>
@@ -153,6 +626,22 @@
       </item>
       <item>
        <widget class="QPushButton" name="shuffleButton">
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+   	background-color: #19232D;
+    border: 1px solid #19232D;
+    color: #F0F0F0;
+    border-radius: 4px;
+    padding: 3px;
+    outline: none;
+}
+
+
+QPushButton:hover{
+    border: 1px solid #148CD2;
+    color: #F0F0F0;
+}</string>
+        </property>
         <property name="text">
          <string>Shuffle</string>
         </property>
@@ -171,6 +660,10 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: #32414B;
+color: white;</string>
+   </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
      <string>Import</string>
@@ -180,7 +673,30 @@
    </widget>
    <addaction name="menuFile"/>
   </widget>
+  <widget class="QStatusBar" name="statusBar"/>
   <widget class="QToolBar" name="mainToolBar">
+   <property name="styleSheet">
+    <string notr="true">QToolBar {
+    background-color: #32414B;
+    border-bottom: 1px solid #19232D;
+    padding: 2px;
+    font-weight: bold;
+}
+
+
+QToolBar::handle:horizontal {
+    width: 6px;
+	background-color: #32414B;
+}
+
+QToolBar::handle:vertical {
+    height: 6px;
+ 	background-color: #32414B;
+}</string>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::TopToolBarArea</set>
+   </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
    </attribute>
@@ -190,7 +706,6 @@
    <addaction name="actionAdd_new_library"/>
    <addaction name="actionClear_library"/>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
   <action name="actionChoose_music_directory">
    <property name="icon">
     <iconset resource="resources.qrc">

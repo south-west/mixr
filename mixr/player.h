@@ -21,8 +21,6 @@ public:
     ~Player();
 
 private slots:
-    void on_playButton_clicked();
-
     void on_durationSlider_sliderMoved(int position);
 
     void on_volumeSlider_sliderMoved(int position);
@@ -30,6 +28,8 @@ private slots:
     void on_positionChanged(qint64 position);
 
     void on_durationChanged(qint64 position);
+
+    void on_playButton_clicked();
 
     void on_songList_itemClicked(QListWidgetItem *item);
 
@@ -46,7 +46,6 @@ private slots:
     void on_actionAdd_new_library_triggered();
 
     void setUpWidgets(size_t row);
-
 private:
     Ui::Player *ui;
     QMediaPlayer* audioPlayer;

@@ -19,34 +19,13 @@ Player::Player(QWidget *parent)  :
     ui->nowPlayingLabel->setText("Now Playing: -----");
     connect(audioPlayer, &QMediaPlayer::positionChanged, this, &Player::on_positionChanged);
     connect(audioPlayer, &QMediaPlayer::durationChanged, this, &Player::on_durationChanged);
+    // qApp->setStyleSheet("stylesheet.qss");
 }
 
 Player::~Player()
 {
     delete ui;
     delete audioPlayer;
-}
-
-void Player::on_playButton_clicked()
-{
-    if (audioPlayer->isAudioAvailable()) {
-        if (audioPlayer->state() == QMediaPlayer::PlayingState) {
-            audioPlayer->pause();
-            ui->playButton->setText("Play");
-        }
-        else {
-            audioPlayer->play();
-            ui->nowPlayingLabel->setText("Now Playing: " + userPlaylist[trackIndex]->getSongName());
-            ui->playButton->setText("Pause");     
-        }
-    }
-    else if (userPlaylist.length() > 0) {
-        trackIndex = 0;
-        audioPlayer->setMedia(QUrl::fromLocalFile(userPlaylist[trackIndex]->getFileLocation()));
-        ui->nowPlayingLabel->setText("Now Playing: " + userPlaylist[trackIndex]->getSongName());
-        audioPlayer->play();
-        ui->playButton->setText("Pause");
-    }
 }
 
 void Player::on_durationSlider_sliderMoved(int position)
@@ -97,6 +76,28 @@ void Player::on_songList_itemClicked(QListWidgetItem *item)
     ui->nowPlayingLabel->setText("Now Playing: " + userPlaylist[trackIndex]->getSongName());
     audioPlayer->play();
     ui->playButton->setText("Pause");
+}
+
+void Player::on_playButton_clicked()
+{
+    if (audioPlayer->isAudioAvailable()) {
+        if (audioPlayer->state() == QMediaPlayer::PlayingState) {
+            audioPlayer->pause();
+            ui->playButton->setText("Play");
+        }
+        else {
+            audioPlayer->play();
+            ui->nowPlayingLabel->setText("Now Playing: " + userPlaylist[trackIndex]->getSongName());
+            ui->playButton->setText("Pause");
+        }
+    }
+    else if (userPlaylist.length() > 0) {
+        trackIndex = 0;
+        audioPlayer->setMedia(QUrl::fromLocalFile(userPlaylist[trackIndex]->getFileLocation()));
+        ui->nowPlayingLabel->setText("Now Playing: " + userPlaylist[trackIndex]->getSongName());
+        audioPlayer->play();
+        ui->playButton->setText("Pause");
+    }
 }
 
 void Player::on_muteButton_clicked() {
